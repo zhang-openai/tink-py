@@ -1,0 +1,12 @@
+absl-py>=1.3.0
+protobuf>5.0.0
+
+[all]
+boto3>=1.26.89
+hvac>=1.1.1
+
+[awskms]
+boto3>=1.26.89
+
+[hcvault]
+hvac>=1.1.1

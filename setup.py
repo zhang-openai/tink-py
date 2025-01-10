@@ -209,7 +209,7 @@ def main() -> None:
     _generate_proto(protoc_command, proto_file)
 
   awskms_extra_requirements = _parse_requirements('requirements_awskms.in')
-  gcpkms_extra_requirements = _parse_requirements('requirements_gcpkms.in')
+  # Removed gcpkms_extra_requirements
   hcvault_extra_requirements = _parse_requirements('requirements_hcvault.in')
 
   setuptools.setup(
@@ -229,14 +229,13 @@ def main() -> None:
       packages=setuptools.find_packages(),
       install_requires=_parse_requirements('requirements.in'),
       extras_require={
-          'gcpkms': gcpkms_extra_requirements,
+          # Removed the 'gcpkms' entry
           'awskms': awskms_extra_requirements,
           'hcvault': hcvault_extra_requirements,
           'all': (
-              gcpkms_extra_requirements
-              + awskms_extra_requirements
+              awskms_extra_requirements
               + hcvault_extra_requirements
-          ),
+          ),  # Removed gcpkms_extra_requirements
       },
       cmdclass=dict(build_ext=BuildBazelExtension),
       ext_modules=[
